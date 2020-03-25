@@ -196,25 +196,25 @@ def mange_pomme(win, food, snake, score):
 	last = [0,0]
 
 	# Si le serpent a mangé la pomme
-	__________________:
+	if snake[0] == food:
 		# Emettre un beep
 		curses.beep()
 
 		# incrémenter le score
-		score _____________
+		score += 1
 
 		# Réactualiser les coordonnées de la pomme
 		# On recommence tant que les coordonnées de la pomme sont dans le serpent
-		while _____ in _____:
+		while food in snake:
 
 			# On actualise au hasard les coordonnées de la pomme
 			# dans les limite de la fenêtre
 			# voir la documentation de la fonction window.getmaxyx()
-			food[0] = randint(1, ___________________)
-			food[1] = randint(1, ___________________)
+			food[0] = randint(1, win.getmaxyx()[0]-1)
+			food[1] = randint(1, win.getmaxyx()[1]-1)
 
 		# Affichage de la pomme aux nouvelles coordonnées en vert sur fond noir
-		win.addch(____, ____, chr(211), curses.color_pair(2))
+		win.addch(food[0], food[1], chr(211), curses.color_pair(2))
 		win.refresh()
 
 	# Sinon
